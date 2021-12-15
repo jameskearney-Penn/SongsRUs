@@ -14,3 +14,5 @@ Rspotify
 
 Third party gem:
 Bcrypt
+
+**Code found in the master branch
