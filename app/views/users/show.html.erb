@@ -1,0 +1,33 @@
+
+
+<h1 class="text-success"><%=@user.username%></h1>
+
+<p>
+  <%= @user.first_name%> <%=@user.last_name%>
+</p>
+
+
+<% if @user.id == current_user.id %>
+  <%= link_to 'edit profile', edit_user_path(@user), style:"color:black" %> 
+<% end %>
+
+<% if @user.id == current_user.id %>
+  <h3 class="text-success">My Playlist</h3>
+<% else %>
+  <h3 class="text-success"><%=@user.username%>'s Playlist</h3> 
+<% end %>
+
+
+<% @user.playlists.in_groups_of(2, false).each do |group|%>
+  <div class="row">
+    <% group.each do |playlist| %>
+      <div class="col-6">
+        <div class="card bg-dark border-success">
+          <div class="card-body">
+            <a href="#" class="card-link"><%= link_to playlist.title, playlist, style:"color:white" %></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

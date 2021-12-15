@@ -1,0 +1,19 @@
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-success " href="/">SongsOnUs</a>
+    <form class="form-inline">
+      <% if logged_in? %>    
+        <div style="padding-left: 20px;">
+          <a button class="btn btn-outline-light" href="/users/<%= current_user.id%>" role="button">Profile</a>
+          <a button class="btn btn-outline-light" href="/playlist/index" role="button">Playlist</a>
+          <a button class="btn btn-outline-light" href="/search" role="button">Search</a>
+          <a button class="btn btn-outline-light bg-light text-success" href='/logout' role="button">Log Out</a>
+        </div>
+      <% else %>
+        <div style="padding-left: 20px;">
+          <a button class="btn btn-outline-light" href="/users/new" role="button">Sign Up</a>
+          <a button class="btn btn-outline-light" href='/login' role="button">Log in</a>
+        </div>
+      <% end %>
+    </form>
+</nav>

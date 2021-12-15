@@ -1,0 +1,24 @@
+<div class="border-success">
+<div class="d-flex justify-content-end">
+  <a class="w-25"><img style="width:100%;" class="img-responsive" src= <%=@artist.images[0]["url"] %>></a>
+</div>
+</div>
+<h1 class="page-header text-success"><%= @artist.name %></h1>
+<table class="table table-dark">
+<tbody>
+<% @artist.albums(country: 'US').each do |album| %>
+  <tr>
+  <td class="w-25 "><img style="width:25%;" class="img-responsive" src= <%=album.images[0]["url"] if !album.images[0].nil?%>></td>
+  <td class ="w-75 text-success"><h3><%= album.name %></h3>
+  
+  </tr>
+  <% album.tracks.each do |track| %>
+    <tr>
+      <td class = "w-75"> <%= link_to track.name , song_show_url(id: track.id, artist_id: @artist.id), style:"color:white"%></td>
+      <td class="w-25"> </td>
+    </tr>
+   <% end %>
+<% end %>
+</tbody>
+</table>
+

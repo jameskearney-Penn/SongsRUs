@@ -1,0 +1,13 @@
+
+<h1 class="page-header text-success">Artists Matching <%= params[:artist_name] %></h1>
+<table class="table table-dark">
+<tbody>
+  <% @artists.each do |artist| %>
+    <tr>
+      <td><h1><%= link_to artist.name, artist_show_url(artist.id), style: "color:white" %></h1></td>
+      <td class="w-25"><img class="img-fluid img-thumbnail" src= <%=artist.images[0]["url"] if !artist.images[0].nil?%>></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+ 

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-success">Playlists</h1>
+
+<h4><%= link_to 'New Playlist', new_playlist_path, style: "color:black" %></h4>
+
+<% @playlists.in_groups_of(2, false).each do |group|%>
+  <div class="row">
+    <% group.each do |playlist| %>
+      <div class="col-6">
+        <div class="card bg-dark border-success text-white">
+          <div class="card-body">
+            <div class="card-link" ><%= link_to playlist.title, playlist, style:"color:#5cb85c" %></div>
+            <div class="card-title">made by <%= link_to playlist.users[0].username, playlist.users[0], style:"color:white" %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+
+

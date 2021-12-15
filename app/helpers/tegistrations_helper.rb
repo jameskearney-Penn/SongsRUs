@@ -1,0 +1,2 @@
+module TegistrationsHelper
+end
