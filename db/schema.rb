@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_12_06_055237) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 2021_12_06_055237) do
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.integer "playlist_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "playlist_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["playlist_id"], name: "index_registrations_on_playlist_id"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_12_06_055237) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "artist_id", null: false
+    t.bigint "artist_id", null: false
     t.string "title"
     t.string "album"
     t.datetime "created_at", precision: 6, null: false
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_12_06_055237) do
   end
 
   create_table "tegistrations", force: :cascade do |t|
-    t.integer "playlist_id", null: false
-    t.integer "song_id", null: false
+    t.bigint "playlist_id", null: false
+    t.bigint "song_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["playlist_id"], name: "index_tegistrations_on_playlist_id"
